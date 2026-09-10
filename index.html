@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<title>ClientsMap — в каких Telegram-чатах сидят ваши клиенты</title>
+<meta name="description" content="Берём ваш список клиентов и показываем, в каких Telegram-чатах их концентрация выше всего. Реклама покупается по плотности аудитории, а не наугад."/>
+<meta name="keywords" content="реклама в телеграм, где сидит аудитория, концентрация клиентов, telegram чаты аудитория, закупка рекламы телеграм, CPM телеграм"/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://clientsmap.com/"/>
+<meta property="og:title" content="ClientsMap — в каких Telegram-чатах сидят ваши клиенты"/>
+<meta property="og:description" content="Список клиентов на входе, карта чатов с их концентрацией на выходе."/>
+<meta property="og:url" content="https://clientsmap.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="ClientsMap"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"ClientsMap","url":"https://clientsmap.com","description":"Карта концентрации клиентов в Telegram-чатах для точной закупки рекламы."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Что нужно от меня, чтобы получить карту?","acceptedAnswer":{"@type":"Answer","text":"Список ваших клиентов с их Telegram-никами или номерами. Больше ничего: ни доступов к рекламному кабинету, ни статистики, ни бюджета."}},
+{"@type":"Question","name":"Как вы находите чаты, где сидят мои клиенты?","acceptedAnswer":{"@type":"Answer","text":"Telegram показывает общие группы с человеком. Наш парк аккаунтов состоит в тысячах профильных чатов, и мы прогоняем через него ваш список."}},
+{"@type":"Question","name":"Чем это отличается от статистики каналов?","acceptedAnswer":{"@type":"Answer","text":"Сервисы статистики считают каналы: охваты, ER, цену размещения. Мы считаем людей. Канал с миллионом подписчиков может не содержать ни одного вашего покупателя, а чат на три тысячи — двадцать."}},
+{"@type":"Question","name":"Насколько точны данные?","acceptedAnswer":{"@type":"Answer","text":"Ручная проверка сошлась с машинной на 100 процентов, без единого расхождения."}}]}
+</script>
+<style>
+:root{--bg:#0c0e11;--panel:#12151a;--line:#1e232b;--line2:#2a313b;--ink:#e6eaf0;--dim:#8b95a5;--acc:#4ade80;
+--mono:ui-monospace,Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans)}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(12,14,17,.92);z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font:600 16px var(--mono)}
+.logo b{color:var(--acc)}
+.nav{display:flex;gap:22px;font-size:14px;color:var(--dim)}
+.nav a{text-decoration:none}
+@media(max-width:620px){.nav{display:none}}
+.hero{padding:72px 0 48px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 18px;letter-spacing:-.8px}
+.lead{font-size:17px;color:var(--dim);max-width:640px;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:6px;text-decoration:none;font-size:15px;border:1px solid var(--line2)}
+.btn.pri{background:var(--acc);color:#07130c;border-color:var(--acc)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:44px 0}
+.num{background:var(--panel);padding:22px}
+.num b{display:block;font:600 26px/1.2 var(--mono);color:var(--acc)}
+.num span{display:block;font-size:13px;color:var(--dim);margin-top:6px}
+@media(max-width:620px){.nums{grid-template-columns:1fr}}
+section{padding:52px 0;border-top:1px solid var(--line)}
+h2{font-size:24px;margin:0 0 8px;letter-spacing:-.4px}
+.sub{color:var(--dim);margin:0 0 28px;max-width:640px}
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.job{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px}
+.job h3{margin:0 0 8px;font-size:16px}
+.job p{margin:0;color:var(--dim);font-size:14px}
+@media(max-width:620px){.jobs{grid-template-columns:1fr}}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 20px 46px;border-left:1px solid var(--line);margin-left:14px}
+ol.steps li:last-child{border-left-color:transparent;padding-bottom:0}
+ol.steps li:before{content:counter(s);position:absolute;left:-14px;top:-2px;width:28px;height:28px;border-radius:50%;background:var(--panel);border:1px solid var(--line2);color:var(--acc);font:600 13px/26px var(--mono);text-align:center}
+ol.steps b{display:block;margin-bottom:3px}
+ol.steps span{color:var(--dim);font-size:14px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--panel);color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+td.n{font-family:var(--mono);text-align:right}
+td.d{font-family:var(--mono);text-align:right;color:var(--acc);font-weight:600}
+.note{font-size:13px;color:var(--dim);margin-top:14px}
+.guard{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--acc);border-radius:8px;padding:22px}
+.guard h3{margin:0 0 8px;font-size:17px}
+.guard p{margin:0;color:var(--dim);font-size:14px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"+";color:var(--acc);font-family:var(--mono);margin-right:10px}
+details p{color:var(--dim);margin:10px 0 0 24px;font-size:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <div class="logo">clients<b>map</b></div>
+  <nav class="nav"><a href="#how">Как работает</a><a href="#data">Данные</a><a href="#faq">Вопросы</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="hero">
+    <h1>Узнайте, в каких чатах уже сидят ваши клиенты</h1>
+    <p class="lead">Вы даёте список своих клиентов. Мы показываем Telegram-чаты, где их концентрация выше всего. Дальше реклама покупается по плотности аудитории, а не наугад по охватам.</p>
+    <div class="cta"><a class="btn pri" href="#contact">Получить карту</a><a class="btn" href="#data">Посмотреть на данных</a></div>
+  </div>
+  <div class="nums">
+    <div class="num"><b>116</b><span>чатов на карте прямо сейчас</span></div>
+    <div class="num"><b>288</b><span>найденных совпадений клиент — чат</span></div>
+    <div class="num"><b>100%</b><span>совпадение с ручной проверкой</span></div>
+  </div>
+  <section id="jobs">
+    <h2>Что это решает</h2>
+    <p class="sub">Не список функций, а задачи, с которыми к нам приходят.</p>
+    <div class="jobs">
+      <div class="job"><h3>Бюджет уходит, выхлоп непонятный</h3><p>Вы покупаете охваты и надеетесь, что среди них есть ваша аудитория. Мы показываем места, где она уже собрана.</p></div>
+      <div class="job"><h3>CPM растёт, а качество нет</h3><p>Крупный канал стоит дорого потому, что крупный. Чат на три тысячи человек с двадцатью вашими клиентами стоит копейки.</p></div>
+      <div class="job"><h3>Непонятно, где своя ниша</h3><p>Тематика чата и состав его участников — разные вещи. Мы смотрим не на название, а на людей.</p></div>
+      <div class="job"><h3>Нечем проверить подрядчика</h3><p>Карта — измеримое основание для закупки. Видно, почему выбран именно этот чат.</p></div>
+    </div>
+  </section>
+  <section id="how">
+    <h2>Как это работает</h2>
+    <p class="sub">Пять шагов. От вас нужен только первый.</p>
+    <ol class="steps">
+      <li><b>Вы даёте список клиентов</b><span>Telegram-ники или номера. Доступы к рекламному кабинету не нужны.</span></li>
+      <li><b>Мы прогоняем его через парк аккаунтов</b><span>Парк состоит в тысячах профильных чатов. Telegram показывает общие группы с человеком.</span></li>
+      <li><b>Считаем плотность</b><span>Сколько ваших людей в чате и сколько там всего участников. Плотность — клиентов на 10 000.</span></li>
+      <li><b>Отдаём карту</b><span>Чаты по плотности, с сырыми числами. Без интерпретаций.</span></li>
+      <li><b>Вы покупаете рекламу по карте</b><span>Мы не берём процент с закупки и не участвуем в размещении.</span></li>
+    </ol>
+  </section>
+  <section id="data">
+    <h2>Как выглядит результат</h2>
+    <p class="sub">Наша собственная база, прогнанная через наш же парк. Ровно то, что вы получите на своих клиентах.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Чат</th><th>Участников</th><th>Наших</th><th>На 10 000</th></tr></thead>
+      <tbody>
+        <tr><td>@bitokaychat</td><td class="n">1 222</td><td class="n">4</td><td class="d">32.7</td></tr>
+        <tr><td>@mishajihovitskiychat</td><td class="n">9 174</td><td class="n">26</td><td class="d">28.3</td></tr>
+        <tr><td>@blacklistbybit</td><td class="n">9 057</td><td class="n">13</td><td class="d">14.4</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Просеяно 2.3 млн участников профильных чатов. 46 чатов содержат больше одного клиента из базы — это и есть рабочий список для закупки.</p>
+  </section>
+  <section id="guarantee">
+    <h2>Чем отвечаем</h2>
+    <div class="guard"><h3>Совпадение с ручной проверкой — 100%</h3><p>Результат машины сверялся вручную, расхождений не найдено ни одного. Мы отдаём сырые числа, которые можно перепроверить самостоятельно: зайти в чат и посмотреть.</p></div>
+  </section>
+  <section id="faq">
+    <h2>Вопросы</h2>
+    <details><summary>Что нужно от меня?</summary><p>Список ваших клиентов с их Telegram-никами или номерами. Больше ничего.</p></details>
+    <details><summary>Как вы находите чаты?</summary><p>Telegram показывает общие группы с человеком. Парк аккаунтов состоит в тысячах профильных чатов, через него и прогоняется ваш список.</p></details>
+    <details><summary>Чем это отличается от статистики каналов?</summary><p>Те считают каналы: охваты, ER, цену. Мы считаем людей. Канал с миллионом подписчиков может не содержать ни одного вашего покупателя, а чат на три тысячи — двадцать.</p></details>
+    <details><summary>Что вы делаете с моим списком?</summary><p>Используем только для прогона, третьим лицам не передаём. В отчёте — чаты и числа, а не персональные данные.</p></details>
+    <details><summary>Для каких ниш работает сейчас?</summary><p>Русскоязычный крипто-сегмент: обменники, P2P, платёжки, AML, арбитраж. Под другую нишу пул собирается неделями — говорим об этом до начала работы.</p></details>
+    <details><summary>Чего вы не обещаете?</summary><p>Депозитов, конверсий и продаж. Мы показываем, где аудитория; что вы ей скажете — вне нашей зоны.</p></details>
+  </section>
+  <section id="contact">
+    <h2>Забрать карту</h2>
+    <p class="sub">Напишите, чем занимаетесь и сколько клиентов в списке. Ответим, есть ли смысл в вашей нише и за какой срок сделаем.</p>
+    <div class="cta"><a class="btn pri" href="https://t.me/clientsmap">Написать в Telegram</a></div>
+  </section>
+</main>
+<footer class="wrap"><div>ClientsMap — карта концентрации клиентов в Telegram</div><div>clientsmap.com</div></footer>
+</body>
+</html>
