@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<title>Пример отчёта — ClientsMap</title>
+<meta name="description" content="Как выглядит карта концентрации клиентов: обезличенный пример отчёта для криптообменника. База 1240 клиентов, 11 чатов, расчёт цены контакта."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://clientsmap.com/example/"/>
+<meta property="og:title" content="Пример отчёта — ClientsMap"/>
+<meta property="og:description" content="Обезличенный пример: где на самом деле сидят клиенты криптообменника и во сколько обходится контакт с ними."/>
+<meta property="og:url" content="https://clientsmap.com/example/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="ClientsMap"/>
+<meta property="og:image" content="https://clientsmap.com/og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://clientsmap.com/og.png"/>
+<link rel="preconnect" href="https://mc.yandex.ru">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=112451333','ym');
+ym(112451333,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112451333" style="position:absolute;left:-9999px" alt=""/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K88P6CGLE0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K88P6CGLE0');</script>
+<style>
+:root{--bg:#0c0e11;--panel:#12151a;--line:#1e232b;--line2:#2a313b;--ink:#e6eaf0;--dim:#8b95a5;--acc:#4ade80;
+--mono:ui-monospace,Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans)}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(12,14,17,.92);z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font:600 16px var(--mono)}
+.logo b{color:var(--acc)}
+.nav{display:flex;gap:22px;font-size:14px;color:var(--dim)}
+.nav a{text-decoration:none}
+@media(max-width:620px){.nav{display:none}}
+.hero{padding:72px 0 48px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 18px;letter-spacing:-.8px}
+.lead{font-size:17px;color:var(--dim);max-width:640px;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:6px;text-decoration:none;font-size:15px;border:1px solid var(--line2)}
+.btn.pri{background:var(--acc);color:#07130c;border-color:var(--acc)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:44px 0}
+.num{background:var(--panel);padding:22px}
+.num b{display:block;font:600 26px/1.2 var(--mono);color:var(--acc)}
+.num span{display:block;font-size:13px;color:var(--dim);margin-top:6px}
+@media(max-width:620px){.nums{grid-template-columns:1fr}}
+section{padding:52px 0;border-top:1px solid var(--line)}
+h2{font-size:24px;margin:0 0 8px;letter-spacing:-.4px}
+.sub{color:var(--dim);margin:0 0 28px;max-width:640px}
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.job{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px}
+.job h3{margin:0 0 8px;font-size:16px}
+.job p{margin:0;color:var(--dim);font-size:14px}
+@media(max-width:620px){.jobs{grid-template-columns:1fr}}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 20px 46px;border-left:1px solid var(--line);margin-left:14px}
+ol.steps li:last-child{border-left-color:transparent;padding-bottom:0}
+ol.steps li:before{content:counter(s);position:absolute;left:-14px;top:-2px;width:28px;height:28px;border-radius:50%;background:var(--panel);border:1px solid var(--line2);color:var(--acc);font:600 13px/26px var(--mono);text-align:center}
+ol.steps b{display:block;margin-bottom:3px}
+ol.steps span{color:var(--dim);font-size:14px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--panel);color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+td.n{font-family:var(--mono);text-align:right}
+td.d{font-family:var(--mono);text-align:right;color:var(--acc);font-weight:600}
+.note{font-size:13px;color:var(--dim);margin-top:14px}
+.guard{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--acc);border-radius:8px;padding:22px}
+.guard h3{margin:0 0 8px;font-size:17px}
+.guard p{margin:0;color:var(--dim);font-size:14px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"+";color:var(--acc);font-family:var(--mono);margin-right:10px}
+details p{color:var(--dim);margin:10px 0 0 24px;font-size:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+<style>
+.badge{display:inline-block;background:rgba(74,222,128,.1);border:1px solid var(--acc);color:var(--acc);
+border-radius:999px;padding:4px 12px;font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.5px;margin-bottom:18px}
+.warnbox{background:var(--panel);border:1px solid var(--line);border-left:2px solid #f0b429;border-radius:8px;padding:18px 20px;margin:0 0 34px}
+.warnbox b{color:#f0b429}
+.warnbox p{margin:6px 0 0;color:var(--dim);font-size:14px}
+.brief{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:0 0 34px}
+.brief div{background:var(--panel);padding:18px 20px}
+.brief dt{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.4px;margin:0 0 5px}
+.brief dd{margin:0;font:600 15px var(--sans)}
+@media(max-width:620px){.brief{grid-template-columns:1fr}}
+tr.hl td{background:rgba(74,222,128,.05)}
+tr.bad td{color:var(--dim)}
+tr.bad td.d{color:#e0685a}
+.money{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 20px}
+.mcard{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px}
+.mcard.win{border-color:var(--acc)}
+.mcard h4{margin:0 0 12px;font-size:14px;color:var(--dim);font-weight:500}
+.mcard .big{font:600 30px/1 var(--mono);letter-spacing:-1px}
+.mcard.win .big{color:var(--acc)}
+.mcard.lose .big{color:#e0685a}
+.mcard ul{margin:12px 0 0;padding:0 0 0 16px;color:var(--dim);font-size:13px}
+.mcard li{margin:3px 0}
+@media(max-width:620px){.money{grid-template-columns:1fr}}
+.kicker{font-size:19px;line-height:1.5;margin:0 0 8px}
+.kicker b{color:var(--acc)}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <div class="logo"><a href="/" style="text-decoration:none">clients<b>map</b></a></div>
+  <nav class="nav"><a href="/#how">Как работает</a><a href="/#data">Данные</a><a href="/#faq">Вопросы</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="hero" style="padding:56px 0 24px">
+    <div class="badge">Пример отчёта</div>
+    <h1>Где на самом деле сидели клиенты обменника</h1>
+    <p class="lead">Так выглядит результат нашей работы. Ниже — настоящий формат отчёта на обезличенных данных: что клиент дал на входе, что получил на выходе и что это меняет в стоимости рекламы.</p>
+  </div>
+
+  <div class="warnbox">
+    <b>Это демонстрация формата, а не реальный клиент.</b>
+    <p>Названия чатов обобщены, цифры изменены, цены размещения взяты как типичные для рынка. Мы не показываем данные заказчиков — ни с их разрешения, ни без. Ваш отчёт будет выглядеть так же, но с вашими числами.</p>
+  </div>
+
+  <section style="border-top:none;padding-top:0">
+    <h2>Вводные</h2>
+    <p class="sub">Обменник USDT в Telegram. Покупал рекламу в крупных крипто-каналах и не понимал, окупается ли она.</p>
+    <div class="brief">
+      <div><dt>Что дал заказчик</dt><dd>1 240 Telegram-ников своих клиентов</dd></div>
+      <div><dt>Что не давал</dt><dd>Ни доступов, ни сумм, ни переписок</dd></div>
+      <div><dt>Сколько заняло</dt><dd>Двое суток</dd></div>
+      <div><dt>Что получил</dt><dd>11 чатов, 118 попаданий</dd></div>
+    </div>
+  </section>
+
+  <section id="map">
+    <h2>Карта: где сидят его клиенты</h2>
+    <p class="sub">Отсортировано по числу найденных клиентов. Последняя колонка — сколько случайных людей нужно охватить, чтобы задеть одного своего.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Чат</th><th style="text-align:right">Участников</th><th style="text-align:right">Его клиентов</th><th style="text-align:right">Плотность</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>P2P-обмен USDT, Дубай</td><td class="n">3 420</td><td class="n">21</td><td class="d">1 из 163</td></tr>
+          <tr class="hl"><td>Арбитраж трафика и вебмастера</td><td class="n">8 940</td><td class="n">19</td><td class="d">1 из 470</td></tr>
+          <tr class="hl"><td>Криптообмен, Грузия</td><td class="n">2 180</td><td class="n">16</td><td class="d">1 из 136</td></tr>
+          <tr class="hl"><td>Релоканты, Турция</td><td class="n">14 600</td><td class="n">14</td><td class="d">1 из 1 043</td></tr>
+          <tr class="hl"><td>Наличные и обмен, Ташкент</td><td class="n">1 870</td><td class="n">11</td><td class="d">1 из 170</td></tr>
+          <tr><td>Трейдеры USDT</td><td class="n">6 300</td><td class="n">10</td><td class="d">1 из 630</td></tr>
+          <tr><td>ВЭД и платежи в Китай</td><td class="n">4 750</td><td class="n">9</td><td class="d">1 из 528</td></tr>
+          <tr><td>Криптообмен, Бали</td><td class="n">1 240</td><td class="n">7</td><td class="d">1 из 177</td></tr>
+          <tr><td>P2P, Армения</td><td class="n">2 900</td><td class="n">6</td><td class="d">1 из 483</td></tr>
+          <tr><td>Крипточат, Кипр</td><td class="n">3 100</td><td class="n">3</td><td class="d">1 из 1 033</td></tr>
+          <tr><td>Общий крипто-чат</td><td class="n">41 200</td><td class="n">2</td><td class="d">1 из 20 600</td></tr>
+          <tr class="bad"><td>Крупный крипто-канал, где он покупал рекламу</td><td class="n">214 000</td><td class="n">4</td><td class="d">1 из 53 500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Последняя строка — не чат, а канал из его собственной закупки. Добавлена для сравнения: 214 тысяч подписчиков и четыре его клиента внутри.</p>
+  </section>
+
+  <section id="money">
+    <h2>Что это меняет в деньгах</h2>
+    <p class="sub">Один и тот же бюджет, разные места. Цены размещения — типичные для рынка на сентябрь 2026.</p>
+    <div class="money">
+      <div class="mcard lose">
+        <h4>Как он покупал раньше</h4>
+        <div class="big">11 250 ₽</div>
+        <ul>
+          <li>за контакт с одним своим клиентом</li>
+          <li>пост в канале на 214 000 — 45 000 ₽</li>
+          <li>его клиентов внутри — 4</li>
+        </ul>
+      </div>
+      <div class="mcard win">
+        <h4>Первые пять чатов из карты</h4>
+        <div class="big">148 ₽</div>
+        <ul>
+          <li>за контакт с одним своим клиентом</li>
+          <li>пять размещений — около 12 000 ₽</li>
+          <li>его клиентов внутри — 81</li>
+        </ul>
+      </div>
+    </div>
+    <p class="kicker">Тот же клиент, те же деньги, <b>в 76 раз дешевле контакт</b>. И это без учёта того, что в чате человек читает сообщение, а в ленте канала пролистывает.</p>
+  </section>
+
+  <section id="honest">
+    <h2>Чего в этом отчёте нет</h2>
+    <p class="sub">Чтобы не было завышенных ожиданий.</p>
+    <div class="guard">
+      <h3>Нашлось 118 попаданий из 1 240 клиентов — это 9,5% базы</h3>
+      <p>Остальные либо не состоят в публичных чатах, либо состоят в тех, куда наш парк аккаунтов ещё не зашёл. Карта растёт каждую неделю, но обещать полное покрытие мы не будем. Девять с половиной процентов базы — это 118 живых людей, до которых теперь понятно, как дотянуться, и это уже меняет закупку.</p>
+    </div>
+    <p class="note">Мы не считаем охваты, ER и стоимость тысячи показов — для этого есть сервисы статистики. Мы считаем людей: ваших, поимённо, по вашему же списку.</p>
+  </section>
+
+  <section id="next">
+    <h2>Как получить такой же по своей базе</h2>
+    <ol class="steps">
+      <li><b>Присылаете список клиентов</b><span>Telegram-ники или номера. Обезличенный — имена, суммы и переписки нам не нужны.</span></li>
+      <li><b>Мы прогоняем его через парк аккаунтов</b><span>Обычно двое суток. Список после отчёта у нас не хранится.</span></li>
+      <li><b>Получаете таблицу и разбор</b><span>Где сидят, сколько их там, и с каких размещений начинать.</span></li>
+    </ol>
+    <p class="note" style="margin-top:24px">Первый отчёт делаем бесплатно — чтобы вы посмотрели на свои числа до любых денег.</p>
+  </section>
+</main>
+<footer class="wrap"><div>ClientsMap — карта концентрации клиентов в Telegram</div><div><a href="/" style="color:var(--acc);text-decoration:none">clientsmap.com</a></div></footer>
+</body>
+</html>
