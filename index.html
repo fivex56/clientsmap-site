@@ -164,9 +164,17 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-siz
   <section id="contact">
     <h2>Забрать карту</h2>
     <p class="sub">Напишите, чем занимаетесь и сколько клиентов в списке. Ответим, есть ли смысл в вашей нише и за какой срок сделаем.</p>
-    <div class="cta"><a class="btn pri" href="https://t.me/clientsmap">Написать в Telegram</a></div>
+    <div class="cta"><a class="btn pri" id="tg" href="https://t.me/clientsmap">Написать в Telegram</a></div>
   </section>
 </main>
 <footer class="wrap"><div>ClientsMap — карта концентрации клиентов в Telegram</div><div>clientsmap.com</div></footer>
+<script>
+// Клик по «Написать в Telegram» = заявка. Считаем в обеих системах: Метрика
+// покажет источник и путь до клика, GA — воронку. Без этого сайт немой.
+document.getElementById('tg').addEventListener('click',function(){
+  try{ym(112451333,'reachGoal','tg_click');}catch(e){}
+  try{gtag('event','tg_click',{event_category:'lead',event_label:'telegram'});}catch(e){}
+});
+</script>
 </body>
 </html>
